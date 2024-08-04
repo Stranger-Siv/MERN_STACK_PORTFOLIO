@@ -11,6 +11,7 @@ const Apps = () => {
         { withCredentials: true }
       );
       setApps(data.softwareApplications);
+      
     };
     getMyApps();
   }, []);
