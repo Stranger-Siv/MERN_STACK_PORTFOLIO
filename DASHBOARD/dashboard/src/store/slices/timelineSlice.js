@@ -72,7 +72,7 @@ const timelineSlice = createSlice({
     dispatch(timelineSlice.actions.getAllTimelineRequest());
     try {
       const response = await axios.get(
-        "https://mern-stack-portfolio-2puo.onrender.com/api/v1/timeline/getall",
+        "http://localhost:4000/api/v1/timeline/getall",
         { withCredentials: true }
       );
       dispatch(
@@ -89,7 +89,7 @@ const timelineSlice = createSlice({
     dispatch(timelineSlice.actions.addNewTimelineRequest());
     try {
       const response = await axios.post(
-        "https://mern-stack-portfolio-2puo.onrender.com/api/v1/timeline/add",
+        "http://localhost:4000/api/v1/timeline/add",
         data,
         {
           withCredentials: true,
@@ -110,7 +110,7 @@ const timelineSlice = createSlice({
     dispatch(timelineSlice.actions.deleteTimelineRequest());
     try {
       const response = await axios.delete(
-        `https://mern-stack-portfolio-2puo.onrender.com/api/v1/timeline/delete/${id}`,
+        `http://localhost:4000/api/v1/timeline/delete/${id}`,
         {
           withCredentials: true,
         }

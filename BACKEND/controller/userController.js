@@ -13,6 +13,10 @@ export const register = catchAsyncErrors(async (req, res, next) => {
   const { avatar, resume } = req.files;
 
   //POSTING AVATAR
+  const cloudinaryResponse = await cloudinary.uploader.upload(
+    avatar.tempFilePath,
+    { folder: "PORTFOLIO PROJECT IMAGES" }
+  );
   const cloudinaryResponseForAvatar = await cloudinary.uploader.upload(
     avatar.tempFilePath,
     { folder: "PORTFOLIO AVATAR" }
@@ -193,7 +197,7 @@ export const updatePassword = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const getUserForPortfolio = catchAsyncErrors(async (req, res, next) => {
-  const id = "669b1e758e44723748ecf03e";
+  const id = "66ccb30b009b94e5d3a87e47";
   const user = await User.findById(id);
   res.status(200).json({
     success: true,
@@ -265,3 +269,4 @@ export const resetPassword = catchAsyncErrors(async (req, res, next) => {
 
   generateToken(user, "Reset Password Successfully!", 200, res);
 });
+

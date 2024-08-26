@@ -12,7 +12,6 @@ import applicationRouter from "./router/softwareApplicationRoutes.js"
 import skillRouter from "./router/skillRouter.js"
 import projectRouter from "./router/projectRoutes.js"
 
-
 const app = express();
 dotenv.config({ path: "./config/.env" })
 
@@ -26,6 +25,7 @@ app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
+console.log()
 app.use(
     fileUpload({
         useTempFiles: true,
