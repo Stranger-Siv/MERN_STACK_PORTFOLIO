@@ -16,7 +16,7 @@ export const addNewSkill = catchAsyncErrors(async (req, res, next) => {
     svg.tempFilePath,
     { folder: "PORTFOLIO SKILL IMAGES" }
   );
-  if (!cloudinaryResponse || cloudinaryResponse.error) {
+  if (!Response || cloudinaryResponse.error) {
     console.error(
       "Cloudinary Error:",
       cloudinaryResponse.error || "Unknown Cloudinary error"

@@ -13,10 +13,6 @@ export const register = catchAsyncErrors(async (req, res, next) => {
   const { avatar, resume } = req.files;
 
   //POSTING AVATAR
-  const cloudinaryResponse = await cloudinary.uploader.upload(
-    avatar.tempFilePath,
-    { folder: "PORTFOLIO PROJECT IMAGES" }
-  );
   const cloudinaryResponseForAvatar = await cloudinary.uploader.upload(
     avatar.tempFilePath,
     { folder: "PORTFOLIO AVATAR" }
@@ -67,12 +63,12 @@ export const register = catchAsyncErrors(async (req, res, next) => {
     facebookURL,
     linkedInURL,
     avatar: {
-      public_id: cloudinaryResponse.public_id, // Set your cloudinary public_id here
-      url: cloudinaryResponse.secure_url, // Set your cloudinary secure_url here
+      public_id: cloudinaryResponseForAvatar.public_id, // Set your cloudinary public_id here
+      url: cloudinaryResponseForAvatar.secure_url, // Set your cloudinary secure_url here
     },
     resume: {
-      public_id: cloudinaryResponse.public_id, // Set your cloudinary public_id here
-      url: cloudinaryResponse.secure_url, // Set your cloudinary secure_url here
+      public_id: cloudinaryResponseForResume.public_id, // Set your cloudinary public_id here
+      url: cloudinaryResponseForResume.secure_url, // Set your cloudinary secure_url here
     },
   });
   generateToken(user, "Registered!", 201, res);
