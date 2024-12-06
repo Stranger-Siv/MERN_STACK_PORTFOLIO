@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 const Portfolio = () => {
   const [viewAll, setViewAll] = useState(false);
   const [projects, setProjects] = useState([]);
+  
   useEffect(() => {
     const getMyProjects = async () => {
       const { data } = await axios.get(
@@ -17,6 +18,7 @@ const Portfolio = () => {
     };
     getMyProjects();
   }, []);
+
   return (
     <div>
       <div className="relative mb-12">
@@ -51,10 +53,16 @@ const Portfolio = () => {
             projects.map((element) => {
               return (
                 <Link to={`/project/${element._id}`} key={element._id}>
-                  <img
-                    src={element.projectBanner && element.projectBanner.url}
-                    alt={element.title}
-                  />
+                  <div className="relative group">
+                    <img
+                      src={element.projectBanner && element.projectBanner.url}
+                      alt={element.title}
+                      className="w-full h-full object-cover transition-all duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-75 flex items-center justify-center text-white text-xl font-semibold transition-opacity duration-300">
+                      {element.title}
+                    </div>
+                  </div>
                 </Link>
               );
             })
@@ -62,10 +70,16 @@ const Portfolio = () => {
             projects.slice(0, 9).map((element) => {
               return (
                 <Link to={`/project/${element._id}`} key={element._id}>
-                  <img
-                    src={element.projectBanner && element.projectBanner.url}
-                    alt={element.title}
-                  />
+                  <div className="relative group">
+                    <img
+                      src={element.projectBanner && element.projectBanner.url}
+                      alt={element.title}
+                      className="w-full h-full object-cover transition-all duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-75 flex items-center justify-center text-white text-xl font-semibold transition-opacity duration-300">
+                      {element.title}
+                    </div>
+                  </div>
                 </Link>
               );
             })}
