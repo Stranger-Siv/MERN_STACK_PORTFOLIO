@@ -13,7 +13,6 @@ import skillRouter from "./router/skillRouter.js"
 import projectRouter from "./router/projectRoutes.js"
 import axios from "axios";
 
-
 const app = express();
 dotenv.config({ path: "./config/.env" })
 
