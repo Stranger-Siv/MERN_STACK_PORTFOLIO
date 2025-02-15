@@ -1,24 +1,44 @@
 import React from "react";
 import { ThemeProvider } from "@/components/theme-provider";
+import Navbar from "@/components/Navbar";
 import Hero from "./sub-components/Hero";
-import Timeline from "./sub-components/Timeline";
 import About from "./sub-components/About";
 import Skills from "./sub-components/Skills";
+import Timeline from "./sub-components/Timeline";
 import Portfolio from "./sub-components/Portfolio";
 import Apps from "./sub-components/Apps";
 import Contact from "./sub-components/Contact";
 
 const Home = () => {
   return (
-    <article className="px-5 mt-10 sm:mt-14 md:mt-16 lg:mt-24 xl:mt-32 sm:mx-auto w-full max-w-[1050px] flex flex-col gap-14">
-      <Hero />
-      <Timeline />
-      <About />
-      <Skills />
-      <Portfolio />
-      <Apps />
-      <Contact />
-    </article>
+    <ThemeProvider defaultTheme="dark" forcedTheme="dark">
+      <div className="min-h-screen bg-[#1a1a1a] text-white">
+        <Navbar />
+        <main className="pt-20">
+          <Hero />
+          <div className="space-y-24">
+            <section id="about">
+              <About />
+            </section>
+            <section id="skills">
+              <Skills />
+            </section>
+            <section id="experience">
+              <Timeline />
+            </section>
+            <section id="portfolio">
+              <Portfolio />
+            </section>
+            <section id="tools">
+              <Apps />
+            </section>
+            <section id="contact">
+              <Contact />
+            </section>
+          </div>
+        </main>
+      </div>
+    </ThemeProvider>
   );
 };
 

@@ -15,73 +15,82 @@ import axios from "axios";
 
 const Hero = () => {
   const [user, setUser] = useState({});
+  
   useEffect(() => {
     const getMyProfile = async () => {
       const { data } = await axios.get(
-        "http://localhost:4000/api/v1/user/me/portfolio",
+        "https://mern-stack-portfolio-2puo.onrender.com/api/v1/user/me/portfolio",
         { withCredentials: true }
       );
       setUser(data.user);
     };
     getMyProfile();
   }, []);
+
   return (
-    <div className="w-full">
-      <div className="flex items-center gap-2 mb-2">
-        <span className="bg-green-400 rounded-full h-2 w-2"></span>
-        <p>Online</p>
+    <section className="pt-20 text-center">
+      <div className="mb-12">
+        <div className="flex flex-col items-center gap-2">
+          <div className="w-16 h-1 bg-gradient-to-r from-gray-500 to-transparent mb-4"></div>
+          <h2 className="text-2xl md:text-3xl font-medium">
+            Hi, I'm {user.fullName} 
+            <span className="inline-block ml-2 animate-bounce">👋</span>
+          </h2>
+          <p className="text-gray-400">BTech Final Year Student in Computer Science & Engineering</p>
+          <div className="w-16 h-1 bg-gradient-to-l from-gray-500 to-transparent mt-4"></div>
+        </div>
       </div>
-      <h1 className="overflow-x-hidden text-[1.3rem] sm:text-[1.75rem] 
-      md:text-[2.2rem] lg:text-[2.8rem] tracking-[2px] mb-4">
-        Hey, I'm {user.fullName}
+
+      <h1 className="text-5xl md:text-6xl lg:text-7xl font-medium max-w-4xl mx-auto leading-tight mb-8">
+        Passionate about <span className="text-gray-500">building</span> and{" "}
+        <span className="text-gray-500">learning</span> through projects
       </h1>
-      <h1 className="text-tubeLight-effect overflow-x-hidden text-[1.3rem] 
-      sm:text-[1.75rem] md:text-[2.2rem] lg:text-[2.8rem] tracking-[15px]">
-        <Typewriter
-          words={["FULLSTACK DEVELOPER", "STUDENT", "FREELANCER"]}
-          loop={50}
-          cursor
-          typeSpeed={70}
-          deleteSpeed={50}
-          delaySpeed={1000}
-        />
-      </h1>
-      <div className="w-fit px-5 py-2 bg-slate-50 rounded-[20px] flex gap-5 
-      items-center mt-4 md:mt-8 lg:mt-10">
-        <Link to={user.linkedInURL} target="_blank">
-          <Linkedin className="text-sky-500 w-7 h-7" />
-        </Link>
-        <Link to={user.twitterURL} target="_blank">
-          <Twitter className="text-blue-800 w-7 h-7" />
-        </Link>
-        <Link to={user.instagramURL} target="_blank">
-          <Instagram className="text-pink-500 w-7 h-7" />
-        </Link>
-        <Link to={user.facebookURL} target="_blank">
-          <Facebook className="text-blue-800 w-7 h-7" />
-        </Link>
+
+      <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-16">
+        Transforming ideas into reality through code and creativity
+      </p>
+
+      {/* Animated Tech Stack */}
+      <div className="flex flex-wrap justify-center gap-6 items-center mb-16">
+        <div className="flex flex-col items-center gap-2">
+          <div className="w-12 h-12 rounded-lg bg-gray-800/50 flex items-center justify-center">
+            <span className="text-2xl">⚛️</span>
+          </div>
+          <span className="text-sm text-gray-400">React</span>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <div className="w-12 h-12 rounded-lg bg-gray-800/50 flex items-center justify-center">
+            <span className="text-2xl">🚀</span>
+          </div>
+          <span className="text-sm text-gray-400">Node.js</span>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <div className="w-12 h-12 rounded-lg bg-gray-800/50 flex items-center justify-center">
+            <span className="text-2xl">🎨</span>
+          </div>
+          <span className="text-sm text-gray-400">Tailwind</span>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <div className="w-12 h-12 rounded-lg bg-gray-800/50 flex items-center justify-center">
+            <span className="text-2xl">🌿</span>
+          </div>
+          <span className="text-sm text-gray-400">MongoDB</span>
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <div className="w-12 h-12 rounded-lg bg-gray-800/50 flex items-center justify-center">
+            <span className="text-2xl">⚡</span>
+          </div>
+          <span className="text-sm text-gray-400">Express</span>
+        </div>
       </div>
-      <div className="mt-4 md:mt-8 lg:mt-10  flex gap-3">
-        <Link to={user.githubURL} target="_blank">
-          <Button className="rounded-[30px] flex items-center gap-2 flex-row">
-            <span>
-              <Github />
-            </span>
-            <span>Github</span>
-          </Button>
-        </Link>
-        <Link to={user.resume && user.resume.url} target="_blank">
-          <Button className="rounded-[30px] flex items-center gap-2 flex-row">
-            <span>
-              <ExternalLink />
-            </span>
-            <span>Resume </span>
-          </Button>
-        </Link>
+
+      {/* Decorative Dots */}
+      <div className="flex justify-center items-center gap-3">
+        <div className="w-2 h-2 rounded-full bg-gray-500 animate-pulse"></div>
+        <div className="w-2 h-2 rounded-full bg-gray-500 animate-pulse delay-100"></div>
+        <div className="w-2 h-2 rounded-full bg-gray-500 animate-pulse delay-200"></div>
       </div>
-      <p className="mt-8 text-xl tracking-[2px]">{user.aboutMe}</p>
-      <hr className="my-8 md::my-10 " />
-    </div>
+    </section>
   );
 };
 
