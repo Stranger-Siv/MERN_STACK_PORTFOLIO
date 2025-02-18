@@ -22,7 +22,7 @@ app.use(cors({
     credentials: true
 }))
 
-const url = `http://localhost:4000`;
+const url = `https://mern-stack-portfolio-f5wr.onrender.com`;
 const interval = 30000;
 
 function reloadWebsite() {
