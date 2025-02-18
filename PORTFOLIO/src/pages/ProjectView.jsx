@@ -29,7 +29,7 @@ const ProjectView = () => {
     const getProject = async () => {
       try {
         const { data } = await axios.get(
-          `https://mern-stack-portfolio-2puo.onrender.com/api/v1/project/get/${id}`,
+          `http://localhost:4000/api/v1/project/get/${id}`,
           { withCredentials: true }
         );
         setProject(data.project);
