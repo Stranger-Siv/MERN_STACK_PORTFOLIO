@@ -22,7 +22,7 @@ app.use(cors({
     credentials: true
 }))
 
-const url = `https://mern-stack-portfolio-f5wr.onrender.com`;
+const url = `https://niche-nest-0ad0.onrender.com`;
 const interval = 30000;
 
 function reloadWebsite() {
