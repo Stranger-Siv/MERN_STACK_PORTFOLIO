@@ -22,7 +22,7 @@ app.use(cors({
     credentials: true
 }))
 
-const url = `https://niche-nest-0ad0.onrender.com`;
+const url = `https://portfolio-nmg4.onrender.com`;
 const interval = 30000;
 
 function reloadWebsite() {
