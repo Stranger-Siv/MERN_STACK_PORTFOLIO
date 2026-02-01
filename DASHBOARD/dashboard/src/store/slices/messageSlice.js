@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { API_BASE } from "@/lib/api";
 
 const messageSlice = createSlice({
   name: "messages",
@@ -58,7 +57,7 @@ export const getAllMessages = () => async (dispatch) => {
   dispatch(messageSlice.actions.getAllMessagesRequest());
   try {
     const response = await axios.get(
-      `${API_BASE}/api/v1/message/getall`,
+      "https://api.sivram.in/api/v1/message/getall",
       { withCredentials: true }
     );
     dispatch(
@@ -76,7 +75,7 @@ export const deleteMessage = (id) => async (dispatch) => {
   dispatch(messageSlice.actions.deleteMessageRequest());
   try {
     const response = await axios.delete(
-      `${API_BASE}/api/v1/message/delete/${id}`,
+      `https://api.sivram.in/api/v1/message/delete/${id}`,
       {
         withCredentials: true,
       }

@@ -12,7 +12,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { API_BASE } from "@/lib/api";
 import SpecialLoadingButton from "./sub-components/SpecialLoadingButton";
 import {
   clearAllProjectErrors,
@@ -50,7 +49,7 @@ const UpdateProject = () => {
   useEffect(() => {
     const getProject = async () => {
       await axios
-        .get(`${API_BASE}/api/v1/project/get/${id}`, {
+        .get(`https://api.sivram.in/api/v1/project/get/${id}`, {
           withCredentials: true,
         })
         .then((res) => {

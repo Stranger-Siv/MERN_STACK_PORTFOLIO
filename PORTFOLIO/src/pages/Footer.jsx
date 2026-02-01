@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-2 space-y-4">
             <h3 className="text-2xl font-bold">Your Name</h3>
             <p className="text-gray-400 leading-relaxed">
-              A passionate full-stack developer focused on creating interactive and user-friendly applications.
+              Building kaam247. Full-stack developer focused on creating impactful, user-friendly applications.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
