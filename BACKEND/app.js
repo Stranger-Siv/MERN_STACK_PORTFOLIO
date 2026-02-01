@@ -20,12 +20,16 @@ app.use(cors({
   origin: [
     process.env.PORTFOLIO_URL,
     process.env.DASHBOARD_URL,
+    "https://sivram.in",
+    "https://www.sivram.in",
+    "https://dashboard.sivram.in",
     "http://localhost:5173",
     "http://localhost:5174",
     "http://localhost:5175",
   ].filter(Boolean),
   methods: ["GET", "POST", "DELETE", "PUT"],
-  credentials: true
+  credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization"],
 }))
 
 const url = `https://sivram.in`;

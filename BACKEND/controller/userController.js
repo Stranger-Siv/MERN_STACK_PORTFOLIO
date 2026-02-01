@@ -91,12 +91,19 @@ export const login = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const logout = catchAsyncErrors(async (req, res, next) => {
+  const isProduction = process.env.NODE_ENV === "production";
+  const clearCookieOptions = {
+    httpOnly: true,
+    expires: new Date(Date.now()),
+  };
+  if (process.env.COOKIE_DOMAIN) clearCookieOptions.domain = process.env.COOKIE_DOMAIN;
+  if (isProduction) {
+    clearCookieOptions.sameSite = "none";
+    clearCookieOptions.secure = true;
+  }
   res
     .status(200)
-    .cookie("token", "", {
-      httpOnly: true,
-      expires: new Date(Date.now()),
-    })
+    .cookie("token", "", clearCookieOptions)
     .json({
       success: true,
       message: "Logged Out!",
