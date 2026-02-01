@@ -82,6 +82,20 @@ const projectSlice = createSlice({
       state.error = null;
       state = state.projects;
     },
+    reorderProjectsRequest(state) {
+      state.loading = true;
+      state.error = null;
+    },
+    reorderProjectsSuccess(state, action) {
+      state.projects = action.payload;
+      state.loading = false;
+      state.error = null;
+      state.message = "Order updated";
+    },
+    reorderProjectsFailed(state, action) {
+      state.loading = false;
+      state.error = action.payload;
+    },
   },
 });
 
@@ -158,6 +172,27 @@ export const updateProject = (id, newData) => async (dispatch) => {
     console.log(error);
     dispatch(
       projectSlice.actions.updateProjectFailed(error.response.data.message)
+    );
+  }
+};
+
+export const reorderProjects = (projectIds) => async (dispatch) => {
+  dispatch(projectSlice.actions.reorderProjectsRequest());
+  try {
+    const response = await axios.put(
+      `${getApiBase()}/api/v1/project/reorder`,
+      { projectIds },
+      { withCredentials: true, headers: { "Content-Type": "application/json" } }
+    );
+    dispatch(
+      projectSlice.actions.reorderProjectsSuccess(response.data.projects)
+    );
+    dispatch(projectSlice.actions.clearAllErrors());
+  } catch (error) {
+    dispatch(
+      projectSlice.actions.reorderProjectsFailed(
+        error.response?.data?.message || "Failed to reorder"
+      )
     );
   }
 };

@@ -13,6 +13,7 @@ import {
   clearAllProjectErrors,
   deleteProject,
   getAllProjects,
+  reorderProjects,
   resetProjectSlice,
 } from "@/store/slices/projectSlice";
 import {
@@ -21,7 +22,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@radix-ui/react-tooltip";
-import { Eye, Pen, Trash2 } from "lucide-react";
+import { ArrowDown, ArrowUp, Eye, Pen, Trash2 } from "lucide-react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -41,6 +42,20 @@ const ManageProjects = () => {
     dispatch(deleteProject(id));
   };
 
+  const handleMoveUp = (index) => {
+    if (index <= 0) return;
+    const reordered = [...projects];
+    [reordered[index - 1], reordered[index]] = [reordered[index], reordered[index - 1]];
+    dispatch(reorderProjects(reordered.map((p) => p._id)));
+  };
+
+  const handleMoveDown = (index) => {
+    if (index >= projects.length - 1) return;
+    const reordered = [...projects];
+    [reordered[index], reordered[index + 1]] = [reordered[index + 1], reordered[index]];
+    dispatch(reorderProjects(reordered.map((p) => p._id)));
+  };
+
   useEffect(() => {
     if (error) {
       toast.error(error);
@@ -52,6 +67,10 @@ const ManageProjects = () => {
       dispatch(getAllProjects());
     }
   }, [dispatch, error, loading, message]);
+
+  useEffect(() => {
+    dispatch(getAllProjects());
+  }, [dispatch]);
 
   return (
     <>
@@ -69,6 +88,7 @@ const ManageProjects = () => {
                 <Table>
                   <TableHeader>
                     <TableRow>
+                      <TableHead className="w-20">Order</TableHead>
                       <TableHead>Banner</TableHead>
                       <TableHead>Title</TableHead>
                       <TableHead className="hidden md:table-cell">
@@ -82,9 +102,43 @@ const ManageProjects = () => {
                   </TableHeader>
                   <TableBody>
                     {projects && projects.length > 0 ? (
-                      projects.map((element) => {
+                      projects.map((element, index) => {
                         return (
                           <TableRow className="bg-accent" key={element._id}>
+                            <TableCell className="flex flex-row items-center gap-1">
+                              <TooltipProvider>
+                                <Tooltip>
+                                  <TooltipTrigger asChild>
+                                    <button
+                                      type="button"
+                                      onClick={() => handleMoveUp(index)}
+                                      disabled={index === 0}
+                                      className="border rounded p-1 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-muted"
+                                      aria-label="Move up"
+                                    >
+                                      <ArrowUp className="h-4 w-4" />
+                                    </button>
+                                  </TooltipTrigger>
+                                  <TooltipContent side="bottom">Move up</TooltipContent>
+                                </Tooltip>
+                              </TooltipProvider>
+                              <TooltipProvider>
+                                <Tooltip>
+                                  <TooltipTrigger asChild>
+                                    <button
+                                      type="button"
+                                      onClick={() => handleMoveDown(index)}
+                                      disabled={index === projects.length - 1}
+                                      className="border rounded p-1 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-muted"
+                                      aria-label="Move down"
+                                    >
+                                      <ArrowDown className="h-4 w-4" />
+                                    </button>
+                                  </TooltipTrigger>
+                                  <TooltipContent side="bottom">Move down</TooltipContent>
+                                </Tooltip>
+                              </TooltipProvider>
+                            </TableCell>
                             <TableCell>
                               <div className="font-medium">
                                 <img

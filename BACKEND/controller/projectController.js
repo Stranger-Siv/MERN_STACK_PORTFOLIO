@@ -39,7 +39,10 @@ export const addNewProject = catchAsyncErrors(async (req, res, next) => {
     );
     return next(new ErrorHandler("Failed to upload avatar to Cloudinary", 500));
   }
+  const lastByOrder = await Project.findOne().sort({ order: -1 }).select("order").lean();
+  const nextOrder = (lastByOrder?.order ?? -1) + 1;
   const project = await Project.create({
+    order: nextOrder,
     title,
     description,
     gitRepoLink,
@@ -117,9 +120,26 @@ export const deleteProject = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const getAllProjects = catchAsyncErrors(async (req, res, next) => {
-  const projects = await Project.find();
+  const projects = await Project.find().sort({ order: 1, _id: 1 });
   res.status(200).json({
     success: true,
+    projects,
+  });
+});
+
+export const reorderProjects = catchAsyncErrors(async (req, res, next) => {
+  const { projectIds } = req.body;
+  if (!Array.isArray(projectIds) || projectIds.length === 0) {
+    return next(new ErrorHandler("projectIds array required", 400));
+  }
+  const updates = projectIds.map((id, index) =>
+    Project.updateOne({ _id: id }, { order: index })
+  );
+  await Promise.all(updates);
+  const projects = await Project.find().sort({ order: 1, _id: 1 });
+  res.status(200).json({
+    success: true,
+    message: "Order updated",
     projects,
   });
 });
