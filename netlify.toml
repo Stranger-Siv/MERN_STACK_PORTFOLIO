@@ -1,9 +1,8 @@
-# Netlify build config for this repo
-# Use this if you're deploying the DASHBOARD app (e.g. dashboard.sivram.in)
-# Base must be "DASHBOARD/dashboard" (capital DASHBOARD) – not "dashboard/dashboard"
+# Netlify build config – deploys the PORTFOLIO app (main site, e.g. sivram.in)
+# For the Dashboard app instead, set base = "DASHBOARD/dashboard"
 
 [build]
-  base = "DASHBOARD/dashboard"
+  base = "PORTFOLIO"
   command = "npm run build"
   publish = "dist"
 
