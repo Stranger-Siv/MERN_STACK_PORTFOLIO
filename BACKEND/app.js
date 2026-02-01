@@ -61,6 +61,11 @@ app.use(
   })
 )
 
+// Health check – open this URL in browser or use from frontend to verify API is reachable
+app.get("/api/v1/health", (req, res) => {
+  res.status(200).json({ ok: true, message: "API is running" });
+});
+
 app.use("/api/v1/message", messageRouter)
 app.use("/api/v1/user", userRouter)
 app.use("/api/v1/timeline", timelineRouter)
