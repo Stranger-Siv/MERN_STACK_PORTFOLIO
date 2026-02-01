@@ -9,6 +9,7 @@ async function init() {
     const r = await fetch('/config.json')
     const c = r.ok ? await r.json() : {}
     if (c.apiUrl) window.__API_BASE__ = c.apiUrl
+    if (c.dashboardUrl) window.__DASHBOARD_URL__ = c.dashboardUrl
   } catch (_) { }
   ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
