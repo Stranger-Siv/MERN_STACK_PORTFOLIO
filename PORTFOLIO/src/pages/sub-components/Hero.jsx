@@ -49,7 +49,7 @@ const Hero = () => {
       </h1>
 
       <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-8">
-        Transforming ideas into reality through code and creativity
+        Building my startup Kaam247 — transforming ideas into reality through code
       </p>
 
       {user?.resume?.url && (

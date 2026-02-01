@@ -70,7 +70,7 @@ const About = () => {
               />
             </svg>
           </div>
-          
+
           {/* Content */}
           <div className="space-y-12">
             <div className="flex flex-col items-start">
@@ -79,7 +79,7 @@ const About = () => {
               </h2>
               <div className="mt-4 h-1 w-20 bg-gradient-to-r from-gray-500 to-transparent"></div>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="relative bg-[#232323] p-8 rounded-lg h-[250px] flex flex-col">
                 <div className="mb-6">
@@ -89,8 +89,8 @@ const About = () => {
                 </div>
                 <h3 className="text-xl font-medium mb-3">Who am I?</h3>
                 <p className="text-gray-400 leading-relaxed">
-                 I have interests not only in technology but also in movies, series, 
-            video games, and cooking. I excel in meeting deadlines for my work.
+                  I have interests not only in technology but also in movies, series,
+                  video games, and cooking. I excel in meeting deadlines for my work.
                 </p>
               </div>
 
@@ -102,7 +102,7 @@ const About = () => {
                 </div>
                 <h3 className="text-xl font-medium mb-3">What I do?</h3>
                 <p className="text-gray-400 leading-relaxed">
-                  I build modern web applications, focusing on both functionality 
+                  I build modern web applications, focusing on both functionality
                   and aesthetics to deliver exceptional digital solutions.
                 </p>
               </div>
@@ -115,8 +115,30 @@ const About = () => {
                 </div>
                 <h3 className="text-xl font-medium mb-3">My Goal</h3>
                 <p className="text-gray-400 leading-relaxed">
-                  To create innovative digital experiences that make a positive 
+                  To create innovative digital experiences that make a positive
                   impact while continuously growing as a developer.
+                </p>
+              </div>
+            </div>
+
+            {/* My Startup: Kaam247 */}
+            <div className="mt-16">
+              <h3 className="text-2xl md:text-3xl font-bold mb-2">
+                My Startup: <span className="text-gray-500">Kaam247</span>
+              </h3>
+              <div className="mt-4 h-1 w-20 bg-gradient-to-r from-gray-500 to-transparent mb-8"></div>
+              <div className="relative bg-[#232323] p-8 md:p-10 rounded-lg">
+                <p className="text-gray-400 leading-relaxed space-y-4">
+                  <strong className="text-gray-300">Kaam247</strong> is a hyperlocal, offline task-based marketplace.
+                  It connects people who need small local tasks done with nearby people willing to do the work.
+                  Tasks are short-term, real-world, and limited to a 0–5 km radius.
+                  Anyone can post or accept tasks; there is no professional verification or gatekeeping.
+                  The platform focuses on &ldquo;helping hand&rdquo; tasks, not expert services.
+                  Payments happen directly between users via cash or UPI.
+                  Kaam247 earns a small commission on completed tasks.
+                  Trust is guided by ratings, not by platform certification.
+                  The initial focus is on students, then expands to the public.
+                  Unlike Urban Company, Kaam247 finds nearby people, not professionals.
                 </p>
               </div>
             </div>
