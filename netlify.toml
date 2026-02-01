@@ -1,5 +1,12 @@
-# Netlify build config – deploys the PORTFOLIO app (main site, e.g. sivram.in)
-# For the Dashboard app instead, set base = "DASHBOARD/dashboard"
+# Netlify build config
+#
+# Portfolio (main site, e.g. sivram.in):
+#   base = "PORTFOLIO"  →  build output: PORTFOLIO/dist
+#
+# Dashboard (e.g. dashboard.sivram.in):
+#   base = "DASHBOARD/dashboard"  →  build output: DASHBOARD/dashboard/dist
+#
+# This site deploys the Portfolio. For Dashboard, change base below.
 
 [build]
   base = "PORTFOLIO"
