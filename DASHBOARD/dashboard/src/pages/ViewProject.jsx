@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { API_BASE } from "@/lib/api";
 import { Button } from "@/components/ui/button";
 
 const ViewProject = () => {
@@ -19,7 +20,7 @@ const ViewProject = () => {
   useEffect(() => {
     const getProject = async () => {
       await axios
-        .get(`https://api.sivram.in/api/v1/project/get/${id}`, {
+        .get(`${API_BASE}/api/v1/project/get/${id}`, {
           withCredentials: true,
         })
         .then((res) => {

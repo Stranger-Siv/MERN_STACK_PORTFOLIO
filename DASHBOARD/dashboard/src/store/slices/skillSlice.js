@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { API_BASE } from "@/lib/api";
 
 const skillSlice = createSlice({
   name: "skill",
@@ -87,7 +88,7 @@ export const getAllSkills = () => async (dispatch) => {
   dispatch(skillSlice.actions.getAllSkillsRequest());
   try {
     const response = await axios.get(
-      "https://api.sivram.in/api/v1/skill/getall",
+      `${API_BASE}/api/v1/skill/getall`,
       { withCredentials: true }
     );
     dispatch(skillSlice.actions.getAllSkillsSuccess(response.data.skills));
@@ -103,7 +104,7 @@ export const addNewSkill = (data) => async (dispatch) => {
   dispatch(skillSlice.actions.addNewSkillRequest());
   try {
     const response = await axios.post(
-      "https://api.sivram.in/api/v1/skill/add",
+      `${API_BASE}/api/v1/skill/add`,
       data,
       {
         withCredentials: true,
@@ -123,7 +124,7 @@ export const updateSkill = (id, proficiency) => async (dispatch) => {
   dispatch(skillSlice.actions.updateSkillRequest());
   try {
     const response = await axios.put(
-      `https://api.sivram.in/api/v1/skill/update/${id}`,
+      `${API_BASE}/api/v1/skill/update/${id}`,
       { proficiency },
       {
         withCredentials: true,
@@ -141,7 +142,7 @@ export const deleteSkill = (id) => async (dispatch) => {
   dispatch(skillSlice.actions.deleteSkillRequest());
   try {
     const response = await axios.delete(
-      `https://api.sivram.in/api/v1/skill/delete/${id}`,
+      `${API_BASE}/api/v1/skill/delete/${id}`,
       {
         withCredentials: true,
       }

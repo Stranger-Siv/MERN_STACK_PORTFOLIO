@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { API_BASE } from "@/lib/api";
 
 const forgotResetPassSlice = createSlice({
   name: "forgotPassword",
@@ -51,7 +52,7 @@ export const forgotPassword = (email) => async (dispatch) => {
     dispatch(forgotResetPassSlice.actions.forgotPasswordRequest());
     console.log(email);
     const response = await axios.post(
-      "https://api.sivram.in/api/v1/user/password/forgot",
+      `${API_BASE}/api/v1/user/password/forgot`,
       { email },
       { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
@@ -74,7 +75,7 @@ export const resetPassword =
     try {
       dispatch(forgotResetPassSlice.actions.resetPasswordRequest());
       const response = await axios.put(
-        `https://api.sivram.in/api/v1/user/password/reset/${token}`,
+        `${API_BASE}/api/v1/user/password/reset/${token}`,
         { password, confirmPassword },
         {
           withCredentials: true,
