@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { getApiBase } from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
@@ -29,7 +30,7 @@ const ProjectView = () => {
     const getProject = async () => {
       try {
         const { data } = await axios.get(
-          `https://api.sivram.in/api/v1/project/get/${id}`,
+          `${getApiBase()}/api/v1/project/get/${id}`,
           { withCredentials: true }
         );
         setProject(data.project);

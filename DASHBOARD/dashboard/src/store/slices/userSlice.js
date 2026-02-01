@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { API_BASE } from "@/lib/api";
+import { getApiBase } from "@/lib/api";
 
 const userSlice = createSlice({
   name: "user",
@@ -119,7 +119,7 @@ export const login = (email, password) => async (dispatch) => {
   dispatch(userSlice.actions.loginRequest());
   try {
     const { data } = await axios.post(
-      `${API_BASE}/api/v1/user/login`,
+      `${getApiBase()}/api/v1/user/login`,
       { email, password },
       { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
@@ -134,7 +134,7 @@ export const login = (email, password) => async (dispatch) => {
 export const getUser = () => async (dispatch) => {
   dispatch(userSlice.actions.loadUserRequest());
   try {
-    const { data } = await axios.get(`${API_BASE}/api/v1/user/me`, {
+    const { data } = await axios.get(`${getApiBase()}/api/v1/user/me`, {
       withCredentials: true,
     });
     dispatch(userSlice.actions.loadUserSuccess(data.user));
@@ -146,7 +146,7 @@ export const getUser = () => async (dispatch) => {
 
 export const logout = () => async (dispatch) => {
   try {
-    await axios.get(`${API_BASE}/api/v1/user/logout`, { withCredentials: true });
+    await axios.get(`${getApiBase()}/api/v1/user/logout`, { withCredentials: true });
     dispatch(userSlice.actions.logoutSuccess("Logged out"));
     dispatch(userSlice.actions.clearAllErrors());
   } catch (error) {
@@ -162,7 +162,7 @@ export const updatePassword =
     dispatch(userSlice.actions.updatePasswordRequest());
     try {
       const { data } = await axios.put(
-        `${API_BASE}/api/v1/user/update/password`,
+        `${getApiBase()}/api/v1/user/update/password`,
         { currentPassword, newPassword, confirmNewPassword },
         {
           withCredentials: true,
@@ -182,7 +182,7 @@ export const updateProfile = (data) => async (dispatch) => {
   dispatch(userSlice.actions.updateProfileRequest());
   try {
     const response = await axios.put(
-      `${API_BASE}/api/v1/user/update/me`,
+      `${getApiBase()}/api/v1/user/update/me`,
       data,
       {
         withCredentials: true,

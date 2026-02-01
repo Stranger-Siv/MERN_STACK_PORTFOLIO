@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { API_BASE } from "@/lib/api";
+import { getApiBase } from "@/lib/api";
 
 const timelineSlice = createSlice({
   name: "timeline",
@@ -73,7 +73,7 @@ export const getAllTimeline = () => async (dispatch) => {
   dispatch(timelineSlice.actions.getAllTimelineRequest());
   try {
     const response = await axios.get(
-      `${API_BASE}/api/v1/timeline/getall`,
+      `${getApiBase()}/api/v1/timeline/getall`,
       { withCredentials: true }
     );
     dispatch(
@@ -90,7 +90,7 @@ export const addNewTimeline = (data) => async (dispatch) => {
   dispatch(timelineSlice.actions.addNewTimelineRequest());
   try {
     const response = await axios.post(
-      `${API_BASE}/api/v1/timeline/add`,
+      `${getApiBase()}/api/v1/timeline/add`,
       data,
       {
         withCredentials: true,
@@ -111,7 +111,7 @@ export const deleteTimeline = (id) => async (dispatch) => {
   dispatch(timelineSlice.actions.deleteTimelineRequest());
   try {
     const response = await axios.delete(
-      `${API_BASE}/api/v1/timeline/delete/${id}`,
+      `${getApiBase()}/api/v1/timeline/delete/${id}`,
       {
         withCredentials: true,
       }

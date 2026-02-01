@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import axios from "axios";
 import React, { useState } from "react";
-import { API_BASE } from "@/lib/api";
+import { getApiBase } from "@/lib/api";
 import { toast } from "react-toastify";
 
 const Contact = () => {
@@ -17,7 +17,7 @@ const Contact = () => {
     setLoading(true);
     await axios
       .post(
-        `${API_BASE}/api/v1/message/send`,
+        `${getApiBase()}/api/v1/message/send`,
         { senderName, subject, message },
         {
           withCredentials: true,

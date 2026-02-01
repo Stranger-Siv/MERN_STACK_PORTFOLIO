@@ -3,7 +3,7 @@ import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { API_BASE } from "@/lib/api";
+import { getApiBase } from "@/lib/api";
 
 const Apps = () => {
   const [apps, setApps] = useState([]);
@@ -15,7 +15,7 @@ const Apps = () => {
   useEffect(() => {
     const getMyApps = async () => {
       const { data } = await axios.get(
-        `${API_BASE}/api/v1/softwareapplication/getall`,
+        `${getApiBase()}/api/v1/softwareapplication/getall`,
         { withCredentials: true }
       );
       setApps(data.softwareApplications);

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
-import { API_BASE } from "@/lib/api";
+import { getApiBase } from "@/lib/api";
 
 const Hero = () => {
   const [user, setUser] = useState({});
@@ -11,7 +11,7 @@ const Hero = () => {
   useEffect(() => {
     const getMyProfile = async () => {
       const { data } = await axios.get(
-        `${API_BASE}/api/v1/user/me/portfolio`,
+        `${getApiBase()}/api/v1/user/me/portfolio`,
         { withCredentials: true }
       );
       setUser(data.user);
