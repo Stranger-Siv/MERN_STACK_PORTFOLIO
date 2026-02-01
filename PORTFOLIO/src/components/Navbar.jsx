@@ -58,10 +58,10 @@ const Navbar = () => {
     >
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between items-center">
-          {/* Logo — secret: click S then P (initials) within 5s → dashboard */}
-          <Link to="/" className="text-xl font-bold text-white inline-flex">
-            <span onClick={onSecretS} className="cursor-default">S</span>ivram{" "}
-            <span onClick={onSecretP} className="cursor-default">P</span>radhan
+          {/* Logo — secret: tap/click S then P (initials) within 5s → dashboard; works on phone too */}
+          <Link to="/" className="text-xl font-bold text-white inline-flex items-center">
+            <span onClick={onSecretS} className="cursor-default py-2 px-0.5 -my-1 min-h-[44px] min-w-[28px] inline-flex items-center justify-center touch-manipulation select-none">S</span>ivram{" "}
+            <span onClick={onSecretP} className="cursor-default py-2 px-0.5 -my-1 min-h-[44px] min-w-[28px] inline-flex items-center justify-center touch-manipulation select-none">P</span>radhan
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
