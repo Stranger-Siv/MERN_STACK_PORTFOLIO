@@ -140,6 +140,18 @@ const About = () => {
                   The initial focus is on students, then expands to the public.
                   Unlike Urban Company, Kaam247 finds nearby people, not professionals.
                 </p>
+                <p className="text-gray-400 leading-relaxed mt-6">
+                  Curious to try it?{" "}
+                  <a
+                    href="https://kaam247.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-300 hover:text-white underline underline-offset-2 transition-colors"
+                  >
+                    kaam247.in
+                  </a>{" "}
+                  — post a task or lend a hand in your neighbourhood.
+                </p>
               </div>
             </div>
           </div>

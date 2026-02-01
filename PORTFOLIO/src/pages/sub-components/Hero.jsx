@@ -38,7 +38,7 @@ const Hero = () => {
             Hi, I'm {user.fullName}
             <span className="inline-block ml-2 animate-bounce">👋</span>
           </h2>
-          <p className="text-gray-400">BTech Final Year Student in Computer Science & Engineering</p>
+          <p className="text-gray-400">BTech in Computer Science & Engineering</p>
           <div className="w-16 h-1 bg-gradient-to-l from-gray-500 to-transparent mt-4"></div>
         </div>
       </div>
@@ -49,7 +49,7 @@ const Hero = () => {
       </h1>
 
       <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-8">
-        Building my startup Kaam247 — transforming ideas into reality through code
+        Building Kaam247 — A hyperlocal, offline task-based marketplace
       </p>
 
       {user?.resume?.url && (
