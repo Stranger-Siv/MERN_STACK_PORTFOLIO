@@ -91,13 +91,13 @@ export const login = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const logout = catchAsyncErrors(async (req, res, next) => {
-  const isProduction = process.env.NODE_ENV === "production";
+  const crossOrigin = process.env.NODE_ENV === "production" || process.env.CROSS_ORIGIN_COOKIE === "true";
   const clearCookieOptions = {
     httpOnly: true,
     expires: new Date(Date.now()),
   };
   if (process.env.COOKIE_DOMAIN) clearCookieOptions.domain = process.env.COOKIE_DOMAIN;
-  if (isProduction) {
+  if (crossOrigin) {
     clearCookieOptions.sameSite = "none";
     clearCookieOptions.secure = true;
   }

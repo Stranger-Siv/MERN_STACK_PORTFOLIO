@@ -14,12 +14,12 @@ The frontend (sivram.in and dashboard.sivram.in) calls **`https://api.sivram.in`
 
 ## 2. Backend env (production)
 
-- `NODE_ENV=production`
+- `NODE_ENV=production` **or** `CROSS_ORIGIN_COOKIE=true` (required for dashboard login when frontend is on a different domain, e.g. dashboard.sivram.in → Render)
 - `PORT` = e.g. 4000 (or the port your host uses)
 - `MONGO_URI`, `JWT_SECRET_KEY`, Cloudinary, SMTP, etc.
 - `PORTFOLIO_URL=https://sivram.in`
 - `DASHBOARD_URL=https://dashboard.sivram.in`
-- If backend is at **api.sivram.in**: `COOKIE_DOMAIN=.sivram.in`
+- If backend is at **api.sivram.in**: `COOKIE_DOMAIN=.sivram.in` (leave unset when backend is on Render)
 
 ## 3. CORS and cookies
 
