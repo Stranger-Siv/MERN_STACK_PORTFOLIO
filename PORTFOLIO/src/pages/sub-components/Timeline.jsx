@@ -90,10 +90,10 @@ const Timeline = () => {
           {/* Content */}
           <div className="space-y-12">
             <div className="flex flex-col items-start">
-              <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-wider">
+              <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-wider text-white">
                 MY <span className="text-gray-500">JOURNEY</span>
               </h2>
-              <div className="mt-4 h-1 w-20 bg-gradient-to-r from-gray-500 to-transparent"></div>
+              <div className="mt-4 h-0.5 w-20 bg-gradient-to-r from-gray-500 to-transparent" aria-hidden />
             </div>
 
             <div className="relative space-y-8">
@@ -107,8 +107,7 @@ const Timeline = () => {
                     <div className="w-3 h-3 bg-gray-600 rounded-full border-4 border-[#1a1a1a]"></div>
                   </div>
 
-                  {/* Content */}
-                  <div className="group relative bg-gradient-to-br from-[#2a2a2a] to-[#232323] rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  <div className="group relative bg-gradient-to-br from-[#2a2a2a] to-[#232323] rounded-xl p-6 border border-gray-800/50 hover:border-gray-700/50 transition-all duration-300 hover:-translate-y-0.5">
                     {/* Date badge */}
                     <div className="absolute -left-24 top-6 hidden md:block">
                       <span className="text-sm text-gray-400 bg-[#1a1a1a] px-3 py-1 rounded-full border border-gray-800">
@@ -148,12 +147,10 @@ const Timeline = () => {
                           href={item.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center text-sm text-gray-400 hover:text-white transition-colors mt-4"
+                          className="inline-flex items-center gap-1 text-sm text-gray-400 hover:text-white transition-colors mt-4 font-medium"
                         >
                           Learn more
-                          <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                          </svg>
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                         </a>
                       )}
                     </div>

@@ -55,23 +55,19 @@ const Contact = () => {
               </svg>
             </div>
 
-            {/* Heading */}
             <div className="flex flex-col items-start">
               <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-wider text-white">
                 CONTACT <span className="text-gray-500">ME</span>
               </h2>
-              <div className="mt-4 h-1 w-20 bg-gradient-to-r from-gray-500 to-transparent"></div>
+              <div className="mt-4 h-0.5 w-20 bg-gradient-to-r from-gray-500 to-transparent" aria-hidden />
             </div>
 
-            {/* Contact Form */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
-              {/* Contact Info */}
               <div className="space-y-8">
-                <div className="bg-[#1a1a1a]/50 backdrop-blur-sm p-8 rounded-lg border border-gray-800">
-                  <h3 className="text-xl font-medium mb-6 text-gray-200">Let's Connect</h3>
-                  <p className="text-gray-400 mb-6">
-                    I'm currently available for freelance work or full-time positions.
-                    Feel free to reach out if you have any questions or want to work together.
+                <div className="bg-[#1a1a1a]/50 backdrop-blur-sm p-8 rounded-xl border border-gray-800">
+                  <h3 className="text-xl font-semibold mb-6 text-white">Let&apos;s connect</h3>
+                  <p className="text-gray-400 mb-6 leading-relaxed">
+                    Open to freelance and full-time opportunities. Drop a line if you&apos;d like to collaborate or just say hi.
                   </p>
                   <div className="space-y-4">
                     <p className="text-gray-400">📧 programmersiv21@gmail.com</p>
@@ -81,43 +77,46 @@ const Contact = () => {
               </div>
 
               {/* Contact Form */}
-              <div className="bg-[#1a1a1a]/50 backdrop-blur-sm p-8 rounded-lg border border-gray-800">
+              <div className="bg-[#1a1a1a]/50 backdrop-blur-sm p-8 rounded-xl border border-gray-800">
                 <form onSubmit={handleMessage} className="space-y-6">
                   <div>
-                    <Label className="text-gray-200">Your Name</Label>
+                    <Label className="text-gray-300 font-medium">Your name</Label>
                     <Input
                       value={senderName}
                       onChange={(e) => setSenderName(e.target.value)}
-                      placeholder="Your Name"
-                      className="mt-2 bg-[#232323] border-gray-700 text-white"
+                      placeholder="e.g. Alex"
+                      className="mt-2 bg-[#232323] border-gray-700 text-white placeholder:text-gray-500 focus-visible:ring-gray-500 rounded-lg"
+                      required
                     />
                   </div>
 
                   <div>
-                    <Label className="text-gray-200">Subject</Label>
+                    <Label className="text-gray-300 font-medium">Subject</Label>
                     <Input
                       value={subject}
                       onChange={(e) => setSubject(e.target.value)}
-                      placeholder="Subject"
-                      className="mt-2 bg-[#232323] border-gray-700 text-white"
+                      placeholder="What's this about?"
+                      className="mt-2 bg-[#232323] border-gray-700 text-white placeholder:text-gray-500 focus-visible:ring-gray-500 rounded-lg"
+                      required
                     />
                   </div>
 
                   <div>
-                    <Label className="text-gray-200">Message</Label>
+                    <Label className="text-gray-300 font-medium">Message</Label>
                     <textarea
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
-                      placeholder="Your Message"
+                      placeholder="Your message..."
                       rows="5"
-                      className="w-full mt-2 bg-[#232323] rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-gray-500 border border-gray-700"
+                      className="w-full mt-2 bg-[#232323] rounded-lg px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500/50 border border-gray-700 transition-shadow"
+                      required
                     />
                   </div>
 
                   <div className="flex justify-end">
                     {!loading ? (
-                      <Button className="w-full sm:w-52 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800">
-                        SEND MESSAGE
+                      <Button type="submit" className="w-full sm:w-52 rounded-lg bg-gray-700 hover:bg-gray-600 transition-colors">
+                        Send message
                       </Button>
                     ) : (
                       <button
@@ -141,8 +140,8 @@ const Contact = () => {
           </div>
         </div>
       </section>
-      <footer className="text-center py-4 text-gray-400 border-t border-gray-800">
-        © {new Date().getFullYear()} All rights reserved. Made with ❤️
+      <footer className="text-center py-8 text-gray-500 text-sm border-t border-gray-800">
+        © {new Date().getFullYear()} All rights reserved. Built with care.
       </footer>
     </>
   );

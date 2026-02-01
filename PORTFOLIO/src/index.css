@@ -63,7 +63,17 @@
   * {
     @apply border-border;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Section anchors sit below fixed nav */
+  section[id] {
+    scroll-margin-top: 5.5rem;
   }
 }

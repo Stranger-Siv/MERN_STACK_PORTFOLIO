@@ -19,12 +19,11 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav 
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-[#1a1a1a]/95 backdrop-blur-sm py-4' 
+    <nav
+      className={`fixed w-full z-50 transition-all duration-300 ${isScrolled
+          ? 'bg-[#1a1a1a]/95 backdrop-blur-sm py-4'
           : 'bg-transparent py-6'
-      }`}
+        }`}
     >
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between items-center">
@@ -33,42 +32,26 @@ const Navbar = () => {
             Sivram Pradhan
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <a 
-              href="#about" 
-              className="text-gray-300 hover:text-white transition-colors"
-            >
+          <div className="hidden md:flex items-center gap-8">
+            <a href="#about" className="text-gray-400 hover:text-white transition-colors text-sm font-medium">
               About
             </a>
-            <a 
-              href="#skills" 
-              className="text-gray-300 hover:text-white transition-colors"
-            >
+            <a href="#skills" className="text-gray-400 hover:text-white transition-colors text-sm font-medium">
               Skills
             </a>
-            <a 
-              href="#experience" 
-              className="text-gray-300 hover:text-white transition-colors"
-            >
+            <a href="#experience" className="text-gray-400 hover:text-white transition-colors text-sm font-medium">
               Experience
             </a>
-            <a 
-              href="#portfolio" 
-              className="text-gray-300 hover:text-white transition-colors"
-            >
-              Portfolio
+            <a href="#portfolio" className="text-gray-400 hover:text-white transition-colors text-sm font-medium">
+              Work
             </a>
-            <a 
-              href="#contact" 
-              className="px-4 py-2 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 text-white rounded-lg transition-colors"
-            >
+            <a href="#contact" className="px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-white text-sm font-medium transition-colors">
               Contact
             </a>
           </div>
 
           {/* Mobile Menu Button */}
-          <button 
+          <button
             className="md:hidden text-gray-300 hover:text-white"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
@@ -88,36 +71,36 @@ const Navbar = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 bg-[#232323] rounded-lg overflow-hidden">
             <div className="flex flex-col space-y-2 p-4">
-              <a 
-                href="#about" 
+              <a
+                href="#about"
                 className="text-gray-300 hover:text-white transition-colors py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 About
               </a>
-              <a 
-                href="#skills" 
+              <a
+                href="#skills"
                 className="text-gray-300 hover:text-white transition-colors py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Skills
               </a>
-              <a 
-                href="#experience" 
+              <a
+                href="#experience"
                 className="text-gray-300 hover:text-white transition-colors py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Experience
               </a>
-              <a 
-                href="#portfolio" 
+              <a
+                href="#portfolio"
                 className="text-gray-300 hover:text-white transition-colors py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Portfolio
+                Work
               </a>
-              <a 
-                href="#contact" 
+              <a
+                href="#contact"
                 className="text-gray-300 hover:text-white transition-colors py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >

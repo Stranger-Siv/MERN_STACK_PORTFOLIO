@@ -92,15 +92,14 @@ const Portfolio = () => {
           {/* Content */}
           <div className="space-y-12">
             <div className="flex flex-col items-start">
-              <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-wider">
+              <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-wider text-white">
                 MY <span className="text-gray-500">WORK</span>
               </h2>
-              <div className="mt-4 h-1 w-20 bg-gradient-to-r from-gray-500 to-transparent"></div>
+              <div className="mt-4 h-0.5 w-20 bg-gradient-to-r from-gray-500 to-transparent" aria-hidden />
             </div>
 
             <p className="text-gray-400 text-lg leading-relaxed max-w-2xl">
-              Selected projects that showcase my passion for web development
-              and design. Each project represents a unique challenge and solution.
+              A selection of projects I&apos;ve built — from full-stack apps to experiments. Click through for details.
             </p>
 
             {/* Projects Grid */}
@@ -109,16 +108,16 @@ const Portfolio = () => {
                 <Link
                   to={`/project/${project._id}`}
                   key={project._id}
-                  className="group relative aspect-video overflow-hidden bg-[#232323] rounded-lg"
+                  className="group relative aspect-video overflow-hidden bg-[#232323] rounded-xl border border-gray-800/50 hover:border-gray-700/50 transition-all duration-300"
                 >
                   <img
                     src={project.projectBanner?.url}
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4">
-                    <h3 className="text-xl font-medium mb-2">{project.title}</h3>
-                    <p className="text-sm text-gray-400 text-center line-clamp-2">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-end p-5 text-center">
+                    <h3 className="text-xl font-semibold mb-2 text-white">{project.title}</h3>
+                    <p className="text-sm text-gray-300 line-clamp-2">
                       {project.description?.split('.')[0]}
                     </p>
                   </div>
@@ -127,12 +126,12 @@ const Portfolio = () => {
             </div>
 
             {projects.length > 6 && (
-              <div className="flex justify-center">
+              <div className="flex justify-center mt-10">
                 <button
                   onClick={() => setViewAll(!viewAll)}
-                  className="mt-8 px-8 py-3 border border-white/20 rounded-lg hover:bg-white/10 transition-colors"
+                  className="px-8 py-3 rounded-lg border border-gray-600 text-gray-300 hover:border-gray-500 hover:bg-white/5 hover:text-white transition-colors font-medium"
                 >
-                  {viewAll ? "Show Less" : "View All Projects"}
+                  {viewAll ? "Show less" : "View all projects"}
                 </button>
               </div>
             )}

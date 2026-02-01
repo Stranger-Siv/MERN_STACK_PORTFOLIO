@@ -16,7 +16,7 @@ const Home = () => {
         <Navbar />
         <main className="pt-20">
           <Hero />
-          <div className="space-y-24">
+          <div className="space-y-28 md:space-y-32">
             <section id="about">
               <About />
             </section>

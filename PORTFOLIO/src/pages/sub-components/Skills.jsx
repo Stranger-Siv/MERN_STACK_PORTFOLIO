@@ -90,23 +90,23 @@ const Skills = () => {
           {/* Content */}
           <div className="space-y-12">
             <div className="flex flex-col items-start">
-              <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-wider">
+              <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-wider text-white">
                 MY <span className="text-gray-500">SKILLS</span>
               </h2>
-              <div className="mt-4 h-1 w-20 bg-gradient-to-r from-gray-500 to-transparent"></div>
+              <div className="mt-4 h-0.5 w-20 bg-gradient-to-r from-gray-500 to-transparent" aria-hidden />
             </div>
 
             <p className="text-gray-400 text-lg leading-relaxed max-w-2xl">
-              Technologies and tools I've worked with on my journey as a developer.
+              Technologies and tools I work with to ship products and side projects.
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {skills.map((skill) => (
                 <div
                   key={skill._id}
-                  className="group relative bg-gradient-to-br from-[#2a2a2a] to-[#232323] rounded-lg overflow-hidden hover:from-[#323232] hover:to-[#282828] transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+                  className="group relative bg-gradient-to-br from-[#2a2a2a] to-[#232323] rounded-xl overflow-hidden border border-gray-800/50 hover:border-gray-700/50 hover:-translate-y-0.5 transition-all duration-300"
                 >
-                  <div className="aspect-square p-4 flex flex-col items-center justify-center border border-gray-800/50 rounded-lg backdrop-blur-sm">
+                  <div className="aspect-square p-4 flex flex-col items-center justify-center rounded-xl">
                     <img
                       src={skill.svg?.url}
                       alt={skill.title}

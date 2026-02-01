@@ -74,46 +74,46 @@ const About = () => {
           {/* Content */}
           <div className="space-y-12">
             <div className="flex flex-col items-start">
-              <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-wider">
+              <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-wider text-white">
                 ABOUT <span className="text-gray-500">ME</span>
               </h2>
-              <div className="mt-4 h-1 w-20 bg-gradient-to-r from-gray-500 to-transparent"></div>
+              <div className="mt-4 h-0.5 w-20 bg-gradient-to-r from-gray-500 to-transparent" aria-hidden />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="relative bg-[#232323] p-8 rounded-lg h-[250px] flex flex-col">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              <div className="relative bg-[#232323] p-8 rounded-xl border border-gray-800/50 hover:border-gray-700/50 transition-colors duration-300 flex flex-col min-h-[240px]">
                 <div className="mb-6">
-                  <svg className="w-12 h-12 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-12 h-12 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-medium mb-3">Who am I?</h3>
+                <h3 className="text-xl font-semibold mb-3 text-white">Who am I?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   I have interests not only in technology but also in movies, series,
                   video games, and cooking. I excel in meeting deadlines for my work.
                 </p>
               </div>
 
-              <div className="relative bg-[#232323] p-8 rounded-lg h-[250px] flex flex-col">
+              <div className="relative bg-[#232323] p-8 rounded-xl border border-gray-800/50 hover:border-gray-700/50 transition-colors duration-300 flex flex-col min-h-[240px]">
                 <div className="mb-6">
-                  <svg className="w-12 h-12 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-12 h-12 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-medium mb-3">What I do?</h3>
+                <h3 className="text-xl font-semibold mb-3 text-white">What I do?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   I build modern web applications, focusing on both functionality
                   and aesthetics to deliver exceptional digital solutions.
                 </p>
               </div>
 
-              <div className="relative bg-[#232323] p-8 rounded-lg h-[250px] flex flex-col">
+              <div className="relative bg-[#232323] p-8 rounded-xl border border-gray-800/50 hover:border-gray-700/50 transition-colors duration-300 flex flex-col min-h-[240px]">
                 <div className="mb-6">
-                  <svg className="w-12 h-12 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-12 h-12 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-medium mb-3">My Goal</h3>
+                <h3 className="text-xl font-semibold mb-3 text-white">My Goal</h3>
                 <p className="text-gray-400 leading-relaxed">
                   To create innovative digital experiences that make a positive
                   impact while continuously growing as a developer.
@@ -123,11 +123,11 @@ const About = () => {
 
             {/* My Startup: Kaam247 */}
             <div className="mt-16">
-              <h3 className="text-2xl md:text-3xl font-bold mb-2">
+              <h3 className="text-2xl md:text-3xl font-bold mb-2 text-white">
                 My Startup: <span className="text-gray-500">Kaam247</span>
               </h3>
-              <div className="mt-4 h-1 w-20 bg-gradient-to-r from-gray-500 to-transparent mb-8"></div>
-              <div className="relative bg-[#232323] p-8 md:p-10 rounded-lg">
+              <div className="mt-4 h-0.5 w-20 bg-gradient-to-r from-gray-500 to-transparent mb-8" aria-hidden />
+              <div className="relative bg-[#232323] p-8 md:p-10 rounded-xl border border-gray-800/50 space-y-4">
                 <p className="text-gray-400 leading-relaxed space-y-4">
                   <strong className="text-gray-300">Kaam247</strong> is a hyperlocal, offline task-based marketplace.
                   It connects people who need small local tasks done with nearby people willing to do the work.
@@ -140,17 +140,18 @@ const About = () => {
                   The initial focus is on students, then expands to the public.
                   Unlike Urban Company, Kaam247 finds nearby people, not professionals.
                 </p>
-                <p className="text-gray-400 leading-relaxed mt-6">
+                <p className="text-gray-400 leading-relaxed mt-8 pt-6 border-t border-gray-800">
                   Curious to try it?{" "}
                   <a
                     href="https://kaam247.in"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-300 hover:text-white underline underline-offset-2 transition-colors"
+                    className="inline-flex items-center gap-1.5 text-gray-300 hover:text-white font-medium underline underline-offset-2 transition-colors"
                   >
                     kaam247.in
-                  </a>{" "}
-                  — post a task or lend a hand in your neighbourhood.
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                  </a>
+                  {" "}— post a task or lend a hand in your neighbourhood.
                 </p>
               </div>
             </div>
