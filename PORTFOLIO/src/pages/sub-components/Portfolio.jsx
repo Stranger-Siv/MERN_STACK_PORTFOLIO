@@ -4,6 +4,7 @@ import { loadSlim } from "tsparticles-slim";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { API_BASE } from "@/lib/api";
 
 const Portfolio = () => {
   const [viewAll, setViewAll] = useState(false);
@@ -16,7 +17,7 @@ const Portfolio = () => {
   useEffect(() => {
     const getMyProjects = async () => {
       const { data } = await axios.get(
-        "https://api.sivram.in/api/v1/project/getall",
+        `${API_BASE}/api/v1/project/getall`,
         { withCredentials: true }
       );
       setProjects(data.projects);

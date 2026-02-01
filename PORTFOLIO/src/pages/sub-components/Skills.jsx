@@ -3,6 +3,7 @@ import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { API_BASE } from "@/lib/api";
 
 const Skills = () => {
   const [skills, setSkills] = useState([]);
@@ -14,7 +15,7 @@ const Skills = () => {
   useEffect(() => {
     const getMySkills = async () => {
       const { data } = await axios.get(
-        "https://api.sivram.in/api/v1/skill/getall",
+        `${API_BASE}/api/v1/skill/getall`,
         { withCredentials: true }
       );
       setSkills(data.skills);

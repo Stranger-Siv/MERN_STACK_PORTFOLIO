@@ -3,6 +3,7 @@ import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { API_BASE } from "@/lib/api";
 
 const Timeline = () => {
   const [timeline, setTimeline] = useState([]);
@@ -14,7 +15,7 @@ const Timeline = () => {
   useEffect(() => {
     const getTimeline = async () => {
       const { data } = await axios.get(
-        "https://api.sivram.in/api/v1/timeline/getall",
+        `${API_BASE}/api/v1/timeline/getall`,
         { withCredentials: true }
       );
       setTimeline(data.timelines);
