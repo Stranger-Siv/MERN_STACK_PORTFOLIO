@@ -47,11 +47,19 @@ const Messages = () => {
     }
   }, [dispatch, error, message, loading]);
 
+  // Poll for new messages every 15 seconds so new contact form submissions show on time
+  useEffect(() => {
+    const interval = setInterval(() => {
+      dispatch(getAllMessages());
+    }, 15000);
+    return () => clearInterval(interval);
+  }, [dispatch]);
+
   const handleReturnToDashboard = () => {
     navigateTo("/")
   }
   return (
-  <>
+    <>
       <div className="min-h-[100vh] sm:gap-4 sm:py-4 sm:pl-20">
         <Tabs>
           <TabsContent>

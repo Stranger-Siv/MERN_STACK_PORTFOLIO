@@ -8,6 +8,7 @@ const userSlice = createSlice({
     loading: false,
     user: {},
     isAuthenticated: false,
+    authChecked: false,
     error: null,
     message: null,
     isUpdated: false,
@@ -55,12 +56,14 @@ const userSlice = createSlice({
       state.isAuthenticated = true;
       state.user = action.payload;
       state.error = null;
+      state.authChecked = true;
     },
     loadUserFailed(state, action) {
       state.loading = false;
       state.isAuthenticated = false;
       state.user = {};
       state.error = action.payload;
+      state.authChecked = true;
     },
     updatePasswordRequest(state, action) {
       state.loading = true;
@@ -147,7 +150,9 @@ export const logout = () => async (dispatch) => {
     dispatch(userSlice.actions.logoutSuccess(data.message));
     dispatch(userSlice.actions.clearAllErrors());
   } catch (error) {
-    dispatch(userSlice.actions.logoutFailed(error.response.data.message));
+    // Still clear local state and cookie so user can log in again (e.g. network error)
+    dispatch(userSlice.actions.logoutSuccess("Logged out"));
+    dispatch(userSlice.actions.clearAllErrors());
   }
 };
 
