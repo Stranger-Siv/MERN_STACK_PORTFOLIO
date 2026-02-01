@@ -31,7 +31,7 @@ const Navbar = () => {
     e.stopPropagation();
     if (secretTimeoutRef.current) clearTimeout(secretTimeoutRef.current);
     setSecretStep(1);
-    secretTimeoutRef.current = setTimeout(() => setSecretStep(0), 2000);
+    secretTimeoutRef.current = setTimeout(() => setSecretStep(0), 5000);
   };
 
   const onSecretP = (e) => {
@@ -58,7 +58,7 @@ const Navbar = () => {
     >
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between items-center">
-          {/* Logo — secret: click S then P (initials) within 2s → dashboard */}
+          {/* Logo — secret: click S then P (initials) within 5s → dashboard */}
           <Link to="/" className="text-xl font-bold text-white inline-flex">
             <span onClick={onSecretS} className="cursor-default">S</span>ivram{" "}
             <span onClick={onSecretP} className="cursor-default">P</span>radhan
