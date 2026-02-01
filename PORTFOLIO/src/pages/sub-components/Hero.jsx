@@ -16,11 +16,11 @@ import axios from "axios";
 
 const Hero = () => {
   const [user, setUser] = useState({});
-  
+
   useEffect(() => {
     const getMyProfile = async () => {
       const { data } = await axios.get(
-        "https://mern-stack-portfolio-f5wr.onrender.com/api/v1/user/me/portfolio",
+        "https://api.sivram.in/api/v1/user/me/portfolio",
         { withCredentials: true }
       );
       setUser(data.user);
@@ -34,7 +34,7 @@ const Hero = () => {
         <div className="flex flex-col items-center gap-2">
           <div className="w-16 h-1 bg-gradient-to-r from-gray-500 to-transparent mb-4"></div>
           <h2 className="text-2xl md:text-3xl font-medium">
-            Hi, I'm {user.fullName} 
+            Hi, I'm {user.fullName}
             <span className="inline-block ml-2 animate-bounce">👋</span>
           </h2>
           <p className="text-gray-400">BTech Final Year Student in Computer Science & Engineering</p>

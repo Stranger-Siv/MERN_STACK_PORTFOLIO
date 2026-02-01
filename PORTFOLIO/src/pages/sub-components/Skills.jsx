@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 
 const Skills = () => {
   const [skills, setSkills] = useState([]);
-  
+
   const particlesInit = useCallback(async engine => {
     await loadSlim(engine);
   }, []);
@@ -14,7 +14,7 @@ const Skills = () => {
   useEffect(() => {
     const getMySkills = async () => {
       const { data } = await axios.get(
-        "https://mern-stack-portfolio-f5wr.onrender.com/api/v1/skill/getall",
+        "https://api.sivram.in/api/v1/skill/getall",
         { withCredentials: true }
       );
       setSkills(data.skills);
@@ -85,7 +85,7 @@ const Skills = () => {
               />
             </svg>
           </div>
-          
+
           {/* Content */}
           <div className="space-y-12">
             <div className="flex flex-col items-start">
@@ -94,14 +94,14 @@ const Skills = () => {
               </h2>
               <div className="mt-4 h-1 w-20 bg-gradient-to-r from-gray-500 to-transparent"></div>
             </div>
-            
+
             <p className="text-gray-400 text-lg leading-relaxed max-w-2xl">
               Technologies and tools I've worked with on my journey as a developer.
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {skills.map((skill) => (
-                <div 
+                <div
                   key={skill._id}
                   className="group relative bg-gradient-to-br from-[#2a2a2a] to-[#232323] rounded-lg overflow-hidden hover:from-[#323232] hover:to-[#282828] transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
                 >

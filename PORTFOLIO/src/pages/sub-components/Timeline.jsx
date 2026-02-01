@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 
 const Timeline = () => {
   const [timeline, setTimeline] = useState([]);
-  
+
   const particlesInit = useCallback(async engine => {
     await loadSlim(engine);
   }, []);
@@ -14,7 +14,7 @@ const Timeline = () => {
   useEffect(() => {
     const getTimeline = async () => {
       const { data } = await axios.get(
-        "https://mern-stack-portfolio-f5wr.onrender.com/api/v1/timeline/getall",
+        "https://api.sivram.in/api/v1/timeline/getall",
         { withCredentials: true }
       );
       setTimeline(data.timelines);
@@ -85,7 +85,7 @@ const Timeline = () => {
               />
             </svg>
           </div>
-          
+
           {/* Content */}
           <div className="space-y-12">
             <div className="flex flex-col items-start">
@@ -94,18 +94,18 @@ const Timeline = () => {
               </h2>
               <div className="mt-4 h-1 w-20 bg-gradient-to-r from-gray-500 to-transparent"></div>
             </div>
-            
+
             <div className="relative space-y-8">
               {timeline.map((item, index) => (
                 <div key={item._id} className="relative pl-8 md:pl-32">
                   {/* Timeline line */}
                   <div className="absolute left-3 md:left-16 top-0 h-full w-0.5 bg-gradient-to-b from-gray-800 via-gray-600 to-transparent"></div>
-                  
+
                   {/* Timeline dot */}
                   <div className="absolute left-2 md:left-[60px] top-7 w-4 h-4">
                     <div className="w-3 h-3 bg-gray-600 rounded-full border-4 border-[#1a1a1a]"></div>
                   </div>
-                  
+
                   {/* Content */}
                   <div className="group relative bg-gradient-to-br from-[#2a2a2a] to-[#232323] rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                     {/* Date badge */}
@@ -114,7 +114,7 @@ const Timeline = () => {
                         {item.timeline.from} - {item.timeline.to || 'Present'}
                       </span>
                     </div>
-                    
+
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
                         <h3 className="text-xl font-medium text-white group-hover:text-gray-200 transition-colors">
@@ -124,15 +124,15 @@ const Timeline = () => {
                           {item.timeline.from} - {item.timeline.to || 'Present'}
                         </span>
                       </div>
-                      
+
                       <p className="text-gray-400 leading-relaxed">
                         {item.description}
                       </p>
-                      
+
                       {item.technologies && (
                         <div className="flex flex-wrap gap-2 pt-2">
                           {item.technologies.map((tech, techIndex) => (
-                            <span 
+                            <span
                               key={techIndex}
                               className="text-xs px-2 py-1 bg-gray-800/50 text-gray-400 rounded"
                             >
@@ -141,9 +141,9 @@ const Timeline = () => {
                           ))}
                         </div>
                       )}
-                      
+
                       {item.link && (
-                        <a 
+                        <a
                           href={item.link}
                           target="_blank"
                           rel="noopener noreferrer"

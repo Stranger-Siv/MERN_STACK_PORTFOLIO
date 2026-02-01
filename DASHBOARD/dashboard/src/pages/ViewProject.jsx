@@ -19,7 +19,7 @@ const ViewProject = () => {
   useEffect(() => {
     const getProject = async () => {
       await axios
-        .get(`https://mern-stack-portfolio-f5wr.onrender.com/api/v1/project/get/${id}`, {
+        .get(`https://api.sivram.in/api/v1/project/get/${id}`, {
           withCredentials: true,
         })
         .then((res) => {

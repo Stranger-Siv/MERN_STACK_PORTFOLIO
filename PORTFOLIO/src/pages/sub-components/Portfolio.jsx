@@ -8,7 +8,7 @@ import React, { useEffect, useState } from "react";
 const Portfolio = () => {
   const [viewAll, setViewAll] = useState(false);
   const [projects, setProjects] = useState([]);
-  
+
   const particlesInit = useCallback(async engine => {
     await loadSlim(engine);
   }, []);
@@ -16,7 +16,7 @@ const Portfolio = () => {
   useEffect(() => {
     const getMyProjects = async () => {
       const { data } = await axios.get(
-        "https://mern-stack-portfolio-f5wr.onrender.com/api/v1/project/getall",
+        "https://api.sivram.in/api/v1/project/getall",
         { withCredentials: true }
       );
       setProjects(data.projects);
@@ -87,7 +87,7 @@ const Portfolio = () => {
               />
             </svg>
           </div>
-          
+
           {/* Content */}
           <div className="space-y-12">
             <div className="flex flex-col items-start">
@@ -96,17 +96,17 @@ const Portfolio = () => {
               </h2>
               <div className="mt-4 h-1 w-20 bg-gradient-to-r from-gray-500 to-transparent"></div>
             </div>
-            
+
             <p className="text-gray-400 text-lg leading-relaxed max-w-2xl">
-              Selected projects that showcase my passion for web development 
+              Selected projects that showcase my passion for web development
               and design. Each project represents a unique challenge and solution.
             </p>
 
             {/* Projects Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {(viewAll ? projects : projects.slice(0, 6)).map((project) => (
-                <Link 
-                  to={`/project/${project._id}`} 
+                <Link
+                  to={`/project/${project._id}`}
                   key={project._id}
                   className="group relative aspect-video overflow-hidden bg-[#232323] rounded-lg"
                 >
