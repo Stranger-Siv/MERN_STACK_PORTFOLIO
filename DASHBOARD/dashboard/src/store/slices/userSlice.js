@@ -113,6 +113,8 @@ const userSlice = createSlice({
   },
 });
 
+const TOKEN_KEY = "portfolio_token";
+
 export const login = (email, password) => async (dispatch) => {
   dispatch(userSlice.actions.loginRequest());
   try {
@@ -121,10 +123,11 @@ export const login = (email, password) => async (dispatch) => {
       { email, password },
       { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
+    if (data.token) localStorage.setItem(TOKEN_KEY, data.token);
     dispatch(userSlice.actions.loginSuccess(data.user));
     dispatch(userSlice.actions.clearAllErrors());
   } catch (error) {
-    dispatch(userSlice.actions.loginFailed(error.response.data.message));
+    dispatch(userSlice.actions.loginFailed(error.response?.data?.message || "Login failed"));
   }
 };
 
@@ -143,16 +146,14 @@ export const getUser = () => async (dispatch) => {
 
 export const logout = () => async (dispatch) => {
   try {
-    const { data } = await axios.get(
-      `${API_BASE}/api/v1/user/logout`,
-      { withCredentials: true }
-    );
-    dispatch(userSlice.actions.logoutSuccess(data.message));
-    dispatch(userSlice.actions.clearAllErrors());
-  } catch (error) {
-    // Still clear local state and cookie so user can log in again (e.g. network error)
+    await axios.get(`${API_BASE}/api/v1/user/logout`, { withCredentials: true });
     dispatch(userSlice.actions.logoutSuccess("Logged out"));
     dispatch(userSlice.actions.clearAllErrors());
+  } catch (error) {
+    dispatch(userSlice.actions.logoutSuccess("Logged out"));
+    dispatch(userSlice.actions.clearAllErrors());
+  } finally {
+    localStorage.removeItem(TOKEN_KEY);
   }
 };
 
