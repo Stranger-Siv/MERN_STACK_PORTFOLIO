@@ -1,5 +1,6 @@
 import './App.css'
 import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import axios from 'axios'
 import { ThemeProvider } from './components/theme-provider'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
@@ -18,6 +19,55 @@ function isColdStartError(err) {
   if (err.code === 'ECONNABORTED' || err.message === 'Network Error') return true
   const status = err.response?.status
   return status === 502 || status === 503
+}
+
+function ServerStartingBanner({ onRetry, onDismiss }) {
+  return createPortal(
+    <div
+      role="alert"
+      className="fixed inset-0 z-[99999] flex items-center justify-center p-4 bg-slate-900/80"
+      style={{ backdropFilter: 'blur(6px)' }}
+    >
+      <div className="bg-slate-800 text-white rounded-2xl shadow-2xl max-w-md w-full p-8 flex flex-col items-center border border-slate-700">
+        <div className="w-16 h-16 rounded-xl bg-amber-400 flex items-center justify-center mb-6 shrink-0">
+          <span className="text-3xl font-bold text-white">S</span>
+        </div>
+        <h2 className="text-xl font-bold text-white text-center mb-4">
+          Waking up the server
+        </h2>
+        <p className="text-slate-300 text-sm text-center leading-relaxed mb-2">
+          Our server pauses when inactive to keep the platform fast and affordable.
+        </p>
+        <p className="text-slate-300 text-sm text-center leading-relaxed mb-4">
+          This usually takes 20–40 seconds.
+        </p>
+        <p className="text-slate-300 text-sm text-center leading-relaxed mb-4">
+          Your data and projects remain fully protected.
+        </p>
+        <div className="w-full border-t border-slate-600 my-2" />
+        <p className="text-slate-400 text-xs text-center mb-6">
+          Powered by Render — free tier cold starts.
+        </p>
+        <div className="flex gap-3 w-full">
+          <button
+            type="button"
+            onClick={onRetry}
+            className="flex-1 px-4 py-2.5 rounded-lg bg-amber-400 text-slate-900 font-semibold hover:bg-amber-300 transition-colors"
+          >
+            Retry
+          </button>
+          <button
+            type="button"
+            onClick={onDismiss}
+            className="flex-1 px-4 py-2.5 rounded-lg bg-slate-600 text-white font-medium hover:bg-slate-500 transition-colors"
+          >
+            Dismiss
+          </button>
+        </div>
+      </div>
+    </div>,
+    document.body
+  )
 }
 
 function App() {
@@ -44,13 +94,10 @@ function App() {
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <Router>
         {serverStarting && (
-          <div className="fixed top-0 left-0 right-0 z-[100] bg-amber-950/95 text-amber-100 px-4 py-3 flex flex-wrap items-center justify-center gap-3 text-sm shadow-lg">
-            <span className="font-medium">Server is starting (cold start). This can take 30–60 seconds. Please wait and try again.</span>
-            <div className="flex gap-2">
-              <button type="button" onClick={() => window.location.reload()} className="px-3 py-1.5 rounded bg-amber-700 hover:bg-amber-600 text-white font-medium">Retry</button>
-              <button type="button" onClick={() => setServerStarting(false)} className="px-3 py-1.5 rounded bg-white/10 hover:bg-white/20">Dismiss</button>
-            </div>
-          </div>
+          <ServerStartingBanner
+            onRetry={() => window.location.reload()}
+            onDismiss={() => setServerStarting(false)}
+          />
         )}
         <Routes>
           <Route path="/" element={<Home />} />
